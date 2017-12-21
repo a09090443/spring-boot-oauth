@@ -31,13 +31,19 @@ public class UserInfo implements Serializable{
 	@Column(name = "user_id", nullable = false, length = 6, unique=true)
 	private String userId;
 
-    @Column(updatable = false, nullable = false)
+    @Column(name = "login_id", updatable = false, nullable = false, length = 50)
+    @Size(max = 50)
+    private String loginId;
+
+    @Column(name = "username", updatable = false, nullable = false, length = 50)
     @Size(max = 50)
     private String username;
 
+    @Column(name = "password", updatable = false, nullable = false, length = 500)
     @Size(max = 80)
     private String password;
 
+    @Column(name = "email", updatable = false, nullable = false, length = 50)
     @Email
     @Size(max = 50)
     private String email;
@@ -74,6 +80,14 @@ public class UserInfo implements Serializable{
 
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+
+	public String getLoginId() {
+		return loginId;
+	}
+
+	public void setLoginId(String loginId) {
+		this.loginId = loginId;
 	}
 
 	public String getUsername() {
@@ -171,6 +185,7 @@ public class UserInfo implements Serializable{
 		result = prime * result + ((birthday == null) ? 0 : birthday.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((image == null) ? 0 : image.hashCode());
+		result = prime * result + ((loginId == null) ? 0 : loginId.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
 		result = prime * result + ((registerTime == null) ? 0 : registerTime.hashCode());
@@ -215,6 +230,11 @@ public class UserInfo implements Serializable{
 				return false;
 		} else if (!image.equals(other.image))
 			return false;
+		if (loginId == null) {
+			if (other.loginId != null)
+				return false;
+		} else if (!loginId.equals(other.loginId))
+			return false;
 		if (password == null) {
 			if (other.password != null)
 				return false;
@@ -245,9 +265,10 @@ public class UserInfo implements Serializable{
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", username=" + username + ", password=" + password + ", email=" + email
-				+ ", activated=" + activated + ", image=" + image + ", birthday=" + birthday + ", address=" + address
-				+ ", phone=" + phone + ", registerTime=" + registerTime + ", authorities=" + authorities + "]";
+		return "UserInfo [userId=" + userId + ", loginId=" + loginId + ", username=" + username + ", password="
+				+ password + ", email=" + email + ", activated=" + activated + ", image=" + image + ", birthday="
+				+ birthday + ", address=" + address + ", phone=" + phone + ", registerTime=" + registerTime
+				+ ", authorities=" + authorities + "]";
 	}
 
 }

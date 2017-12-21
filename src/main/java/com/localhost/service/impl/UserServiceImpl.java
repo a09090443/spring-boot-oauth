@@ -21,8 +21,8 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public UserInfo findUserByLoginId(String loginId) {
-		// TODO Auto-generated method stub
-		return null;
+		UserInfo userInfo = userInfoDAO.findUserByLoginId(loginId);
+		return userInfo;
 	}
 
 	@Override
