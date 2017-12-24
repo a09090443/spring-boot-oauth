@@ -37,6 +37,9 @@ public class SecurityConfig {
 		@Autowired
 		private DataSource dataSource;
 
+		@Autowired
+		private UserDetailsService userDetailsService;
+
 		@Bean
 		public TokenStore tokenStore() {
 			return new JdbcTokenStore(dataSource);
@@ -69,7 +72,7 @@ public class SecurityConfig {
 
 		@Override
 		public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-			endpoints.authenticationManager(authenticationManager);
+			endpoints.authenticationManager(authenticationManager).userDetailsService(userDetailsService);
 			endpoints.tokenStore(tokenStore());
 		}
 	}
