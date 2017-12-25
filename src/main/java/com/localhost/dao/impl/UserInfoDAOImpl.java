@@ -22,19 +22,6 @@ public class UserInfoDAOImpl extends BaseHibernateDAOImpl<UserInfo> implements I
 	}
 
 	@Override
-	public UserInfo findUserByUsername(String username) {
-		Map<String, Object> argMap = new HashMap<String, Object>();
-		argMap.put("username", username);
-		StringBuilder hqlStr = new StringBuilder();
-		// From tables
-		hqlStr.append("FROM UserInfo U ");
-		// Select conditions
-		hqlStr.append("WHERE U.username = :username ");
-		List<UserInfo> userList = (List<UserInfo>) this.queryHql(hqlStr.toString(), argMap, true);
-		return CollectionUtils.isEmpty(userList) ? null : userList.get(0);
-	}
-
-	@Override
 	public UserInfo findUserByLoginId(String loginId) {
 		Map<String, Object> argMap = new HashMap<String, Object>();
 		argMap.put("loginId", loginId);
@@ -43,6 +30,19 @@ public class UserInfoDAOImpl extends BaseHibernateDAOImpl<UserInfo> implements I
 		hqlStr.append("FROM UserInfo U ");
 		// Select conditions
 		hqlStr.append("WHERE U.loginId = :loginId ");
+		List<UserInfo> userList = (List<UserInfo>) this.queryHql(hqlStr.toString(), argMap, true);
+		return CollectionUtils.isEmpty(userList) ? null : userList.get(0);
+	}
+
+	@Override
+	public UserInfo findUserByEmail(String email) {
+		Map<String, Object> argMap = new HashMap<String, Object>();
+		argMap.put("email", email);
+		StringBuilder hqlStr = new StringBuilder();
+		// From tables
+		hqlStr.append("FROM UserInfo U ");
+		// Select conditions
+		hqlStr.append("WHERE U.email = :email ");
 		List<UserInfo> userList = (List<UserInfo>) this.queryHql(hqlStr.toString(), argMap, true);
 		return CollectionUtils.isEmpty(userList) ? null : userList.get(0);
 	}

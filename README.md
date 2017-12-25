@@ -49,6 +49,11 @@
   
 # refresh token
 
+ ## client_id=oauth_client
+ ## client_secret=secret
+ ## user=admin
+ ## password=admin
+  
  ## URL : http://localhost:8081/auth/oauth/token?grant_type=refresh_token&refresh_token="refresh_token"
  
  response result :

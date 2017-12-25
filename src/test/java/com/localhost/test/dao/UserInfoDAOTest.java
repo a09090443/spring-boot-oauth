@@ -17,7 +17,16 @@ public class UserInfoDAOTest extends TestBase {
 	public void testFindUserInfoByLoginId() {
 		try {
 			UserInfo user = userInfoDAO.findUserByLoginId("admin");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		assertTrue(true);
+	}
 
+	@Test
+	public void testFindUserInfoByEmail() {
+		try {
+			UserInfo user = userInfoDAO.findUserByEmail("admin@localhost.com");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

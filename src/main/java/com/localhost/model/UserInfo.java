@@ -11,16 +11,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import java.io.Serializable;
 import java.util.Set;
 
-/**
- * User entity.
- *
- * @author dtreb
- */
 @Entity
 @Table(name = "user_info")
 public class UserInfo implements Serializable{
@@ -32,16 +28,20 @@ public class UserInfo implements Serializable{
 	private String userId;
 
     @Column(name = "login_id", updatable = false, nullable = false, length = 50)
+    @NotNull
     @Size(max = 50)
     private String loginId;
 
-    @Column(name = "username", updatable = false, nullable = false, length = 50)
-    @Size(max = 50)
-    private String username;
-
     @Column(name = "password", updatable = false, nullable = false, length = 500)
+    @NotNull
     @Size(max = 80)
     private String password;
+
+	@Column(name = "first_name", nullable = false, length = 50)
+	private String firstName;
+
+	@Column(name = "last_name", length = 50)
+	private String lastName;
 
     @Column(name = "email", updatable = false, nullable = false, length = 50)
     @Email
@@ -90,15 +90,6 @@ public class UserInfo implements Serializable{
 		this.loginId = loginId;
 	}
 
-	public String getUsername() {
-        return username;
-    }
-
-    public UserInfo setUsername(String username) {
-        this.username = username;
-        return this;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -108,7 +99,23 @@ public class UserInfo implements Serializable{
         return this;
     }
 
-    public String getEmail() {
+    public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getEmail() {
         return email;
     }
 
@@ -184,13 +191,14 @@ public class UserInfo implements Serializable{
 		result = prime * result + ((authorities == null) ? 0 : authorities.hashCode());
 		result = prime * result + ((birthday == null) ? 0 : birthday.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((image == null) ? 0 : image.hashCode());
+		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((loginId == null) ? 0 : loginId.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
 		result = prime * result + ((registerTime == null) ? 0 : registerTime.hashCode());
 		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
-		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
 
@@ -225,10 +233,20 @@ public class UserInfo implements Serializable{
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
+		if (firstName == null) {
+			if (other.firstName != null)
+				return false;
+		} else if (!firstName.equals(other.firstName))
+			return false;
 		if (image == null) {
 			if (other.image != null)
 				return false;
 		} else if (!image.equals(other.image))
+			return false;
+		if (lastName == null) {
+			if (other.lastName != null)
+				return false;
+		} else if (!lastName.equals(other.lastName))
 			return false;
 		if (loginId == null) {
 			if (other.loginId != null)
@@ -255,20 +273,15 @@ public class UserInfo implements Serializable{
 				return false;
 		} else if (!userId.equals(other.userId))
 			return false;
-		if (username == null) {
-			if (other.username != null)
-				return false;
-		} else if (!username.equals(other.username))
-			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "UserInfo [userId=" + userId + ", loginId=" + loginId + ", username=" + username + ", password="
-				+ password + ", email=" + email + ", activated=" + activated + ", image=" + image + ", birthday="
-				+ birthday + ", address=" + address + ", phone=" + phone + ", registerTime=" + registerTime
-				+ ", authorities=" + authorities + "]";
+		return "UserInfo [userId=" + userId + ", loginId=" + loginId + ", password=" + password + ", firstName="
+				+ firstName + ", lastName=" + lastName + ", email=" + email + ", activated=" + activated + ", image="
+				+ image + ", birthday=" + birthday + ", address=" + address + ", phone=" + phone + ", registerTime="
+				+ registerTime + ", authorities=" + authorities + "]";
 	}
 
 }

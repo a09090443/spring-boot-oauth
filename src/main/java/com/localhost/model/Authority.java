@@ -15,7 +15,6 @@ import java.util.Objects;
  * Authority entity. Used by OAuth2 workflow and security annotations.
  * User can have a few authorities.
  *
- * @author dtreb
  */
 @Entity
 public class Authority implements Serializable{

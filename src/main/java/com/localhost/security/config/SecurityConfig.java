@@ -4,7 +4,6 @@ import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -46,10 +45,10 @@ public class SecurityConfig {
 		}
 
 		/**
-		 * 配置：安全检查流程 默认过滤器：BasicAuthenticationFilter
-		 * 1、oauth_client_details表中clientSecret字段加密【ClientDetails属性secret】
-		 * 2、CheckEndpoint类的接口 oauth/check_token 无需经过过滤器过滤，默认值：denyAll()
-		 */
+		* 配置：安全檢查流程 默認過濾器：BasicAuthenticationFilter
+		* 1、oauth_client_details表中clientSecret字段加密【ClientDetails屬性secret】
+		* 2、CheckEndpoint類的接口 oauth/check_token 無需經過過濾器過濾，默認值：denyAll()
+		*/
 		@Override
 		public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
 
