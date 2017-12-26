@@ -9,4 +9,5 @@ public interface IUserInfoDAO extends BaseHibernateDAO<UserInfo> {
 	
 	public UserInfo findUserByEmail(String email);
 	
+	public String getMaxUserId();
 }

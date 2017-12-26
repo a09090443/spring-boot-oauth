@@ -10,10 +10,11 @@ import com.localhost.model.UserInfo;
 import com.localhost.test.base.TestBase;
 
 public class UserInfoDAOTest extends TestBase {
+	
 	@Autowired
 	private IUserInfoDAO userInfoDAO;
 
-	@Test
+//	@Test
 	public void testFindUserInfoByLoginId() {
 		try {
 			UserInfo user = userInfoDAO.findUserByLoginId("admin");
@@ -23,10 +24,20 @@ public class UserInfoDAOTest extends TestBase {
 		assertTrue(true);
 	}
 
-	@Test
+//	@Test
 	public void testFindUserInfoByEmail() {
 		try {
 			UserInfo user = userInfoDAO.findUserByEmail("admin@localhost.com");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		assertTrue(true);
+	}
+
+	@Test
+	public void testFindMaxUserId() {
+		try {
+			String maxUserId = userInfoDAO.getMaxUserId();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

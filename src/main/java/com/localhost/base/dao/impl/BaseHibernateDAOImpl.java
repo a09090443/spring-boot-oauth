@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.localhost.base.dao.BaseHibernateDAO;
 
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 public abstract class BaseHibernateDAOImpl<T extends Object> implements BaseHibernateDAO<T> {
 	private static final Logger logger = LoggerFactory.getLogger(BaseHibernateDAOImpl.class);
 

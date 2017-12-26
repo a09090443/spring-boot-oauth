@@ -9,8 +9,8 @@ INSERT INTO oauth_client_details
 VALUES('test1', NULL, 'secret', 'user_info', 'authorization_code,refresh_token', 'http://www.baidu.com', 'ROLE_USER', 1800, 86400, NULL, 'true');
 
 INSERT INTO user_info
-(user_id, address, birthday, email, first_name, image, last_name, login_id, password, phone, register_time, status_id, title_id, activated, username)
-VALUES('000001', '天堂路 001 號', '1992-01-01', 'admin@localhost.com', '最高', '000001.jpg', '指揮官', 'admin', 'b8f57d6d6ec0a60dfe2e20182d4615b12e321cad9e2979e0b9f81e0d6eda78ad9b6dcfe53e4e22d1', '1234-567890', NULL, '2', '1', 1, 'admin');
+(user_id, login_id, password, title_id, first_name, last_name, email, address, birthday, image, phone, activated, register_time)
+VALUES('000001', 'admin', 'b8f57d6d6ec0a60dfe2e20182d4615b12e321cad9e2979e0b9f81e0d6eda78ad9b6dcfe53e4e22d1', '1', '最高', '指揮官', 'admin@localhost.com', '天堂路 001 號', '1992-01-01', '000001.jpg', '1234-567890', 1, NULL);
 
 INSERT INTO authority
 (authority_id, name)

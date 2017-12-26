@@ -34,7 +34,6 @@ CREATE TABLE `user_info` (
   `user_id` varchar(6) COLLATE utf8_unicode_ci NOT NULL,
   `login_id` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(500) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `title_id` varchar(2) COLLATE utf8_unicode_ci DEFAULT NULL,
   `first_name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `last_name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
   `email` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -45,20 +44,13 @@ CREATE TABLE `user_info` (
   `activated` bit(1) NOT NULL,
   `register_time` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`user_id`),
-  UNIQUE KEY `UK_btphhp078cuddpck7j40jqs71` (`login_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE `user_authority` (
-  `user_id` varchar(6) COLLATE utf8_unicode_ci NOT NULL,
+CREATE TABLE `authority` (
   `authority_id` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
-  UNIQUE KEY `user_authority_idx_1` (`user_id`,`authority_id`),
-  KEY `FKgvxjs381k6f48d5d2yi11uh89` (`authority_id`),
-  CONSTRAINT `FKal1t5uf78i79dlx2ry5qqw6c0` FOREIGN KEY (`user_id`) REFERENCES `user_info` (`user_id`),
-  CONSTRAINT `FK4w6wm5kl7k3qpuokhytij9kuj` FOREIGN KEY (`user_id`) REFERENCES `user_detail` (`user_id`),
-  CONSTRAINT `FKgvxjs381k6f48d5d2yi11uh89` FOREIGN KEY (`authority_id`) REFERENCES `authority` (`authority_id`),
-  CONSTRAINT `user_authority_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user_detail` (`user_id`),
-  CONSTRAINT `user_authority_ibfk_2` FOREIGN KEY (`authority_id`) REFERENCES `authority` (`authority_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`authority_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 
 CREATE TABLE `authority` (
   `authority_id` varchar(2) COLLATE utf8_unicode_ci NOT NULL,

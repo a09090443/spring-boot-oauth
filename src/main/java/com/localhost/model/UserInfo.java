@@ -71,8 +71,15 @@ public class UserInfo implements Serializable{
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "authority_id")
     )
-
     private Set<Authority> authorities;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "user_title",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "title_id")
+    )
+    private Set<PersonalTitle> personalTitle;
 
     public String getUserId() {
 		return userId;
