@@ -5,10 +5,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,7 +30,7 @@ public class UserServiceImpl implements IUserService {
 	private PasswordEncoder passwordEncoder;
 
 	@Override
-	public List<UserInfo> findAllUser() throws Exception {
+	public List<UserInfo> findAllUsers() throws Exception {
 		return userInfoDAO.findAll();
 	}
 
@@ -69,7 +66,6 @@ public class UserServiceImpl implements IUserService {
 		getTime = DateUtils.getCurrentDate("yyyy-MM-dd hh:mm:ss");
 		String formatStr = "%06d";
 		String newUserIdStr = String.format(formatStr, newUserId);
-//		BCryptPasswordEncoder passwordEncoderB = new BCryptPasswordEncoder();
 		userInfo.setPassword(passwordEncoder.encode(userInfo.getPassword()));
 		userInfo.setUserId(newUserIdStr);
 		userInfo.setActivated(true);

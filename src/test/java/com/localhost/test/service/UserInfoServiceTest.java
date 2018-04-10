@@ -18,17 +18,17 @@ public class UserInfoServiceTest extends TestBase {
 	@Autowired
 	private IUserService userService;
 
-//	@Test
+	@Test
 	public void testFindAll() {
 		try {
-			List<UserInfo> userInfoList = userService.findAllUser();
+			List<UserInfo> userInfoList = userService.findAllUsers();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		assertTrue(true);
 	}
 	
-//	@Test
+	@Test
 	public void testFindUserByLoginId() {
 		try {
 			UserInfo userInfo = userService.findUserByLoginId("admin");
@@ -38,7 +38,7 @@ public class UserInfoServiceTest extends TestBase {
 		assertTrue(true);
 	}
 
-//	@Test
+	@Test
 	public void testFindUserByEmail() {
 		try {
 			UserInfo userInfo = userService.findUserByEmail("admin@localhost.com");

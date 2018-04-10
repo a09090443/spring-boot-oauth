@@ -2,6 +2,7 @@ package com.localhost.model;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +13,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import java.io.Serializable;
@@ -54,15 +56,18 @@ public class UserInfo implements Serializable{
 	private String image;
 
 	@Column(name = "birthday")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private String birthday;
 
 	@Column(name = "address", length = 40)
 	private String address;
 
-	@Column(name = "phone", length = 11)
+	@Column(name = "phone", length = 10)
+	@Pattern(regexp="(^$|[0-9]{10})")
 	private String phone;
 
-	@Column(name = "registerTime")
+	@Column(name = "registerTime", length = 19)
+	@DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	private String registerTime;
 
     @ManyToMany(fetch = FetchType.EAGER)

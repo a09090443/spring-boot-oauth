@@ -6,7 +6,7 @@ import com.localhost.model.UserInfo;
 
 public interface IUserService {
 	
-	public List<UserInfo> findAllUser() throws Exception;
+	public List<UserInfo> findAllUsers() throws Exception;
 	
 	public UserInfo findUserByLoginId(String loginId);
 	
