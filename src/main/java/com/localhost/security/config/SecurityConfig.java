@@ -11,8 +11,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -83,9 +83,10 @@ public class SecurityConfig {
 		 @Override
 		 public void configure(HttpSecurity http) throws Exception {
 				http.anonymous().disable()
-					.requestMatchers().antMatchers("/api/**")
+					.requestMatchers().antMatchers("/api/**", "/user/**")
 					.and().authorizeRequests()
 					.antMatchers("/api/test1").access("hasRole('ADMIN')")
+					.antMatchers("/user/getAllUsers").authenticated()
 					.and().exceptionHandling().accessDeniedHandler(new OAuth2AccessDeniedHandler());
 		 }
 
@@ -112,7 +113,7 @@ public class SecurityConfig {
 
 		@Bean
 		public PasswordEncoder passwordEncoder() {
-			return new StandardPasswordEncoder();
+			return new BCryptPasswordEncoder();
 		}
 
 		 @Override
