@@ -52,3 +52,12 @@ CREATE TABLE `authority` (
   PRIMARY KEY (`authority_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 
+CREATE TABLE `user_authority` (
+  `user_id` varchar(6) COLLATE utf8_unicode_ci NOT NULL,
+  `authority_id` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`user_id`,`authority_id`),
+  KEY `FKgvxjs381k6f48d5d2yi11uh89` (`authority_id`),
+  CONSTRAINT `FKal1t5uf78i79dlx2ry5qqw6c0` FOREIGN KEY (`user_id`) REFERENCES `user_info` (`user_id`),
+  CONSTRAINT `FKgvxjs381k6f48d5d2yi11uh89` FOREIGN KEY (`authority_id`) REFERENCES `authority` (`authority_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
