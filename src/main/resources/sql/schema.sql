@@ -43,7 +43,7 @@ CREATE TABLE `user_info` (
   `phone` varchar(11) COLLATE utf8_unicode_ci DEFAULT NULL,
   `activated` bit(1) NOT NULL,
   `register_time` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`user_id`),
+  PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `authority` (
@@ -52,8 +52,3 @@ CREATE TABLE `authority` (
   PRIMARY KEY (`authority_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 
-CREATE TABLE `authority` (
-  `authority_id` varchar(2) COLLATE utf8_unicode_ci NOT NULL,
-  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`authority_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
